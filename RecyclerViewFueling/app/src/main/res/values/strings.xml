@@ -1,0 +1,69 @@
+<resources>
+    <string name="btn_toast">提示</string>
+    <string name="btn_go">跳转</string>
+
+    <string name="app_name">智慧加油</string>
+    <string name="fueling_car_service">智慧加油服务</string>
+    <string name="search_empty">附近没有合作的加油站，您可前往导航页面搜索更多。</string>
+    <string name="search">搜索</string>
+    <string name="distance">距离</string>
+    <string name="nav">导航</string>
+    <string name="fueling">加油</string>
+    <string name="distance_100">您当前位置距离所选加油站较远，是否继续选择并在%s加油？</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="unauthorized">您尚未开通智能加油服务，若要继续使用该功能，请先授权开通</string>
+    <string name="no_competence">您没有权限，无法使用智能加油服务</string>
+    <string name="go_competence">请联系车主开通智能加油服务后继续使用</string>
+    <string name="to_service">跳转服务中心加油服务开通页面</string>
+    <string name="net_error">网络异常，请连接网络</string>
+    <string name="detail">加油站详情</string>
+    <string name="base_information">基本信息</string>
+    <string name="gas_name">加油站名称</string>
+    <string name="gas_address">地址</string>
+    <string name="pay_method">支付方式</string>
+    <string name="wechat">微信支付</string>
+    <string name="alipay">支付宝支付</string>
+    <string name="oli_price">油价</string>
+    <string name="unit_Price">%s单价</string>
+    <string name="fueling_information">加油信息填写</string>
+    <string name="choose_oilNo">*请选择油号</string>
+    <string name="oil_price">优享价:</string>
+    <string name="international_price">国标价格:</string>
+    <string name="station_price">本站价格:</string>
+    <string name="choose_gun">*请选择油枪号</string>
+    <string name="choose_gun_faw">*请选择油枪号</string>
+    <string name="gasAmount">*金额</string>
+    <string name="input_price_empty">请输入金额</string>
+    <string name="Amount">金额：</string>
+    <string name="Pay">支付</string>
+    <string name="name">油站名称：</string>
+    <string name="oli_number">油号：</string>
+    <string name="oli_gun">油枪：</string>
+    <string name="refueling_amount">加油金额：</string>
+    <string name="pay_succeed">支付成功，感谢使用智慧加油服务</string>
+    <string name="no_way_receive">无法获取您与加油站的距离，是否继续并在%s加油？</string>
+    <string name="input_price_error">加油金额必须为5-999</string>
+    <string name="price_symbol" translatable="false">"¥%s"</string>
+    <string name="text_distance" translatable="false">"%skm"</string>
+    <string name="text_distance_m" translatable="false">"%sm"</string>
+    <string name="submit_error">提交订单失败</string>
+    <string name="navigation">跳去导航</string>
+    <string name="input_page">加油金额输入页</string>
+    <string name="lineation">——</string>
+    <string name="jump_navi">请问您是否确认跳转至导航服务？</string>
+    <string name="coupon_count">%d张优惠券可用</string>
+    <string name="do_not_use_coupon">不使用优惠券</string>
+    <string name="no_coupon_available">无可用优惠券</string>
+    <string name="coupon_hint">输入金额后获取可用优惠券</string>
+    <string name="coupon">优惠券</string>
+    <string name="payment_amount">支付金额</string>
+    <string name="payment_input_hint">请输入金额</string>
+    <string name="test_km">1.5km</string>
+    <string name="test_92">92#单价</string>
+    <string name="test_95">95#单价</string>
+    <string name="test_98">98号单价</string>
+    <string name="test_92p">¥6.68</string>
+    <string name="test_95p">¥7.28</string>
+    <string name="test_98p">¥8.28</string>
+</resources>

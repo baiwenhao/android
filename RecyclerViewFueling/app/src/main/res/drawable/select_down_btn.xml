@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/btn_speller_chevron_down_pressed" android:state_pressed="true" android:state_selected="false" />
+    <item android:drawable="@drawable/btn_speller_chevron_down_disabled" android:state_enabled="false" />
+    <item android:drawable="@drawable/btn_speller_chevron_down_activated" android:state_selected="false" />
+    <item android:drawable="@drawable/btn_speller_chevron_up_pressed" android:state_pressed="true" android:state_selected="true" />
+    <item android:drawable="@drawable/btn_speller_chevron_up_activated" android:state_selected="true" />
+    <item android:drawable="@drawable/btn_speller_chevron_down_activated" />
+</selector>

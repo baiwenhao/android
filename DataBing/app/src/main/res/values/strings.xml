@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Databinding</string>
+    <string name="add1" translatable="false">+1</string>
+    <string name="add2" translatable="false">+2</string>
+    <string name="undo">undo</string>
+    <string name="reset">reset</string>
+</resources>
