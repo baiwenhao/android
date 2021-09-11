@@ -1,0 +1,2 @@
+rootProject.name = "Gradients"
+include ':app'
