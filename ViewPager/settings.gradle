@@ -1,2 +1,4 @@
 rootProject.name = "ViewPager"
-include ':app'
+include ':tablayout'
+include ':test'
+include ':wechat'
