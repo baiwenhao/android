@@ -4,8 +4,13 @@ LinearLayout 带图片
 RecyclerViewFruit 水果带图片
 RecyclerViewFueling 加油
 RecyclerViewList 列表实例
-RecyclerViewSibebar 垂直菜单
-ViewPage 动态viewPage
+ViewPage
+
+RecyclerView 待合并
+RecyclerViewFruit
+RecyclerViewFueling
+RecyclerViewList
+
 
 https://github.com/12313kaihuang/Demos
 https://github.com/OCNYang/Android-Animation-Set
