@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fragments.add(MyFragment.newInstance("我的日志"));
         fragments.add(MyFragment.newInstance("我的设置"));
         viewPager = findViewById(R.id.viewpage);
-        MyAdapter myFragmentAdapter = new MyAdapter(getSupportFragmentManager(), getLifecycle(), fragments);
-        viewPager.setAdapter(myFragmentAdapter);
+        MyAdapter myAdapter = new MyAdapter(getSupportFragmentManager(), getLifecycle(), fragments);
+        viewPager.setAdapter(myAdapter);
         // 滑动viewpager的监听
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override

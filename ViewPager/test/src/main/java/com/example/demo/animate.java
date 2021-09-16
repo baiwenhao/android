@@ -1,4 +1,4 @@
-package com.example.verticaltab;
+package com.example.demo;
 
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -8,15 +8,14 @@ import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 
-
 /*
-* 动画分为四种
-* AlphaAnimation 透明度动画效果
-* ScaleAnimation 缩放动画效果
-* TranslateAnimation 位移动画效果
-* RotateAnimation 旋转动画效果
-* */
-public class Animate {
+ * 动画分为四种
+ * AlphaAnimation 透明度动画效果
+ * ScaleAnimation 缩放动画效果
+ * TranslateAnimation 位移动画效果
+ * RotateAnimation 旋转动画效果
+ * */
+public class animate {
     // imageView控件由完全透明到完全不透明变化，持续时间为0.2s
     private void toVisibleAnim(View view)
     {
