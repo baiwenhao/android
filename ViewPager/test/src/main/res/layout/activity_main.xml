@@ -1,16 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <androidx.viewpager2.widget.ViewPager2
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:id="@+id/viewPager"
         android:background="@color/purple_200"
         tools:ignore="MissingConstraints" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/main_button"
+        android:id="@+id/btn">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+            android:id="@+id/shadow1"
+            android:text="系统阴影"
+            android:background="#fff"
+            android:gravity="center"
+            android:textColor="#f00"
+            android:elevation="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="45sp"
+            android:background="#37AEE4"
+            android:backgroundTint="#37AEE4"
+            android:text="Both together" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="45sp"
+            android:background="#37AEE4"
+            android:backgroundTint="#37AEE4"
+            android:backgroundTintMode="multiply"
+            android:text="With tint mode" />
+
+        <LinearLayout
+            android:layout_width="130dp"
+            android:layout_height="140dp"
+            android:elevation="20dp"
+            android:background="#fff" />
+
+    </LinearLayout>
+
+</LinearLayout>
