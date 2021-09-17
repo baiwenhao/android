@@ -8,28 +8,25 @@ import android.widget.LinearLayout;
 
 /**
  * @author wenhao
+ * 自定义控件分类：
+ * 自绘式自定义控件
+ * 继承式自定义控件
+ * 组合控件
  */
-public class MainActivity extends AppCompatActivity {
-    LinearLayout linearLayout;
 
+public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // 定义ViePager2
-        // 为ViewPager构建Adapter
 
         ViewPager2 viewPager = findViewById(R.id.viewPager);
         MyAdapter viewPagerAdapter = new MyAdapter();
         viewPager.setAdapter(viewPagerAdapter);
-
-//        linearLayout = findViewById(R.id.btn);
-//        linearLayout.setOnClickListener((v)-> {
-//            linearLayout.setActivated(true);
-//        });
 
         // 动态设置背景色
 //        viewPager.setBackgroundColor(Color.parseColor("#FF00FF"));
 //        viewPager.setBackgroundResource(R.drawable.main_button);
     }
 }
+

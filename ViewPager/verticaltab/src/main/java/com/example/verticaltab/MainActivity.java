@@ -22,16 +22,17 @@ import java.util.ArrayList;
 
 /**
  * @author wenhao
+ *
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    ViewPager2 viewPager;
     String tag = "home";
-    ConstraintLayout i1, i2, i3;
-    ImageView i1Img,i2Img,i3Img;
-    TextView t1, t2, t3;
-    RelativeLayout active;
+    ConstraintLayout i1, i2, i3; // item
+    ImageView i1Img,i2Img,i3Img; // icon
+    TextView t1, t2, t3; // title
+    RelativeLayout active; // ccurrent
     int prevTop = 0;
-    int currentPage = 0;
+
+    // test
     Button btn;
     Boolean stateButton = false;
 
@@ -40,11 +41,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-        initEvent();
-        initViewPager();
+        init();
     }
 
-    private void initEvent() {
+    private void init() {
         btn = findViewById(R.id.show);
         btn.setOnClickListener(v->{
             if (stateButton) {
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    private void activeAnimate2 (View view, int start, int end) {
+    private void activeAllAnimate (View view, int start, int end) {
         view.setVisibility(View.VISIBLE);
         TranslateAnimation ani = new TranslateAnimation(0,0, start, end);
         ani.setDuration(100);
@@ -160,45 +160,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    // viewPager
-    public void initViewPager () {
-        ArrayList<Fragment> fragments = new ArrayList<>();
-        fragments.add(MyFragment.newInstance("主页"));
-        fragments.add(MyFragment.newInstance("详情"));
-        fragments.add(MyFragment.newInstance("设置"));
-        viewPager = findViewById(R.id.view_page);
-        ItemAdapter adapter = new ItemAdapter(getSupportFragmentManager(), getLifecycle(), fragments);
-        viewPager.setAdapter(adapter);
-        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
-//                Log.d(tag, "滚动");
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                changeTab(position);
-//                Log.d(tag, "停止");
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                super.onPageScrollStateChanged(state);
-//                Log.d(tag, "持续");
-            }
-        });
-    }
-
     public void showIcon () {
         if (t1.getVisibility() != View.VISIBLE) {
             t1.setVisibility(View.VISIBLE);
             t2.setVisibility(View.VISIBLE);
             t3.setVisibility(View.VISIBLE);
-            activeAnimate2(i1Img, 10, 0);
-            activeAnimate2(i2Img, 10, 0);
-            activeAnimate2(i3Img, 10, 0);
+            activeAllAnimate(i1Img, 10, 0);
+            activeAllAnimate(i2Img, 10, 0);
+            activeAllAnimate(i3Img, 10, 0);
         }
     }
 
@@ -207,9 +176,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             t1.setVisibility(View.GONE);
             t2.setVisibility(View.GONE);
             t3.setVisibility(View.GONE);
-            activeAnimate2(i1Img, 0, 10);
-            activeAnimate2(i2Img, 0, 10);
-            activeAnimate2(i3Img, 0, 10);
+            activeAllAnimate(i1Img, 0, 10);
+            activeAllAnimate(i2Img, 0, 10);
+            activeAllAnimate(i3Img, 0, 10);
         }
     }
 }

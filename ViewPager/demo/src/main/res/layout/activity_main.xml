@@ -20,27 +20,20 @@
         android:layout_height="400dp"
         android:gravity="center"
         android:orientation="vertical"
-        android:background="@drawable/main_button"
+        android:background="@drawable/button_style"
         android:id="@+id/btn">
 
-        <TextView
-            android:layout_width="50dp"
-            android:layout_height="80dp"
-            android:id="@+id/shadow1"
-            android:text="系统阴影"
-            android:background="#fff"
-            android:gravity="center"
-            android:textColor="#f00"
-            android:elevation="20dp"
-            />
-
+        <com.example.demo.CustomLayout
+            android:id="@+id/custom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="45sp"
             android:background="#37AEE4"
             android:backgroundTint="#37AEE4"
-            android:text="Both together" />
+            android:text="@string/app_name" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -49,14 +42,7 @@
             android:background="#37AEE4"
             android:backgroundTint="#37AEE4"
             android:backgroundTintMode="multiply"
-            android:text="With tint mode" />
-
-        <LinearLayout
-            android:layout_width="130dp"
-            android:layout_height="140dp"
-            android:elevation="20dp"
-            android:background="#fff" />
-
+            android:text="@string/app_name" />
     </LinearLayout>
 
 </LinearLayout>

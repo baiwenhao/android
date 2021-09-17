@@ -1,5 +1,5 @@
 rootProject.name = "ViewPager"
-include ':test'
+include ':demo'
 include ':tablayout'
 include ':wechat'
 include ':verticaltab'
