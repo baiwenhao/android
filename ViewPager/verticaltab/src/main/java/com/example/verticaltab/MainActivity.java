@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,14 +27,14 @@ import java.util.ArrayList;
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     String tag = "home";
-    ConstraintLayout i1, i2, i3; // item
-    ImageView i1Img,i2Img,i3Img; // icon
-    TextView t1, t2, t3; // title
-    RelativeLayout active; // ccurrent
+    ConstraintLayout i1, i2, i3;
+    ImageView i1Img,i2Img,i3Img;
+    TextView t1, t2, t3;
+    RelativeLayout currentActive;
     int prevTop = 0;
 
     // test
-    Button btn;
+    Button toggle, component;
     Boolean stateButton = false;
 
     @Override
@@ -45,18 +46,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void init() {
-        btn = findViewById(R.id.show);
-        btn.setOnClickListener(v->{
+        toggle = findViewById(R.id.toggle);
+        toggle.setOnClickListener(v->{
             if (stateButton) {
-                btn.setText("hide");
+                toggle.setText("hide");
                 showIcon();
             } else {
                 hideIcon();
-                btn.setText("show");
+                toggle.setText("show");
             }
             stateButton = !stateButton;
         });
-        active = findViewById(R.id.active);
+        component = findViewById(R.id.component);
+        currentActive = findViewById(R.id.active);
         i1Img = findViewById(R.id.i1_img);
         i2Img = findViewById(R.id.i2_img);
         i3Img = findViewById(R.id.i3_img);
@@ -72,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         i1.setOnClickListener(this);
         i2.setOnClickListener(this);
         i3.setOnClickListener(this);
+        component.setOnClickListener(this);
 
     }
 
@@ -83,16 +86,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void changeTab (int id) {
         if (id == R.id.i1 || id == 0) {
             i1Img.setActivated(true);
-            activeAnimate(active, i1.getTop());
+            activeAnimate(currentActive, i1.getTop());
             prevTop = i1.getTop();
         } else if (id == R.id.i2 || id == 1) {
             i2Img.setActivated(true);
-            activeAnimate(active, i2.getTop());
+            activeAnimate(currentActive, i2.getTop());
             prevTop = i2.getTop();
         } else if (id == R.id.i3 || id == 2) {
             i3Img.setActivated(true);
-            activeAnimate(active, i3.getTop());
+            activeAnimate(currentActive, i3.getTop());
             prevTop = i3.getTop();
+        } else if (id == R.id.component) {
+            Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+            startActivity(intent);
         }
     }
 

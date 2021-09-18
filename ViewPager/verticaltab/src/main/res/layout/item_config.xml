@@ -23,7 +23,7 @@
         android:layout_height="34dp"
         android:layout_marginBottom="12dp"
         android:gravity="center"
-        android:text="@string/textview"
+        android:text="@string/settings"
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
