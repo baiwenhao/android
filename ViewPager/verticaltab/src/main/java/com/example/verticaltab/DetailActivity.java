@@ -92,12 +92,16 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("text", "home");
-//        map.put("icon", R.drawable.icon_start_style);
+        map.put("icon", R.drawable.icon_start);
         list.add(map);
 
-        map = new HashMap<String, Object>();
-        map.put("text", "detail");
-        list.add(map);
+//        map = new HashMap<String, Object>();
+//        map.put("text", "list");
+//        list.add(map);
+//
+//        map = new HashMap<String, Object>();
+//        map.put("text", "detail");
+//        list.add(map);
 
 //        SimpleAdapter adapter = new SimpleAdapter(
 //                this,
@@ -113,19 +117,4 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
         listView.setAdapter(adapter);
     }
-
-    public void callBack () { // 监听点击事件
-
-    }
-
-    public void setActive () { // 高亮菜单
-
-    }
-
-    public void setColor () { // 氛围灯
-
-    }
-
-    // 国际化
-
 }

@@ -16,9 +16,11 @@ import java.util.Map;
 public class ItemAdapter extends BaseAdapter {
     List<Map<String,Object>> list ;
     LayoutInflater inflater;
+    Context context;
 
     public ItemAdapter(Context context) {
         this.inflater=LayoutInflater.from(context);
+        this.context = context;
     }
 
     public void setList(List<Map<String, Object>> list) {
@@ -50,8 +52,9 @@ public class ItemAdapter extends BaseAdapter {
         TextView text = view.findViewById(R.id.icon_text);
 
         // 给各控件赋值
+//        context.getResources().getDrawable(map.get("icon"))
         Map map = list.get(position);
-//        icon.setBackground((Drawable) map.get("icon"));
+        icon.setBackground((Drawable) map.get("icon"));
         text.setText((String) map.get("text"));
 
         return view;
