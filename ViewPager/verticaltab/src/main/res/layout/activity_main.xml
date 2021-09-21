@@ -41,7 +41,7 @@
             <!-- 高亮背景 -->
             <LinearLayout
                 android:layout_marginTop="30dp"
-                android:background="@drawable/item_style"
+                android:background="@drawable/item_light"
                 android:layout_width="140dp"
                 android:layout_height="140dp" />
             <!-- 阴影 -->
@@ -83,7 +83,7 @@
                     android:layout_height="80dp"
                     android:layout_marginTop="20dp"
                     android:contentDescription="@string/app_name"
-                    android:background="@drawable/icon_start_style"
+                    android:background="@drawable/icon_start_selector"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -115,7 +115,7 @@
                     android:layout_height="80dp"
                     android:layout_marginTop="20dp"
                     android:contentDescription="@string/app_name"
-                    android:background="@drawable/icon_start_style"
+                    android:background="@drawable/icon_start_selector"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -147,7 +147,7 @@
                     android:layout_height="80dp"
                     android:layout_marginTop="20dp"
                     android:contentDescription="@string/app_name"
-                    android:background="@drawable/icon_start_style"
+                    android:background="@drawable/icon_start_selector"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -181,7 +181,7 @@
                 android:layout_height="80dp"
                 android:layout_marginTop="20dp"
                 android:contentDescription="@string/app_name"
-                android:background="@drawable/icon_config_style"
+                android:background="@drawable/icon_config_selector"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

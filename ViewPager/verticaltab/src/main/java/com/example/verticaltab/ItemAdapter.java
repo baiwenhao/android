@@ -1,7 +1,7 @@
 package com.example.verticaltab;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +9,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 
 public class ItemAdapter extends BaseAdapter {
+    String tag = "home";
     List<Map<String,Object>> list ;
     LayoutInflater inflater;
     Context context;
@@ -44,19 +44,27 @@ public class ItemAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // 反射行布局
-        View view = inflater.inflate(R.layout.item_custom,null);
+        ViewHolder holder;
 
-        // 获取各个控件
-        ImageView icon = view.findViewById(R.id.icon_img);
-        TextView text = view.findViewById(R.id.icon_text);
-
-        // 给各控件赋值
-//        context.getResources().getDrawable(map.get("icon"))
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.item_custom, null);
+            holder = new ViewHolder();
+            holder.icon = convertView.findViewById(R.id.icon_img);
+            holder.text = convertView.findViewById(R.id.icon_text);
+            convertView.setTag(holder);
+        } else {
+            holder =(ViewHolder) convertView.getTag();
+        }
+//        context.getResources().getDrawable(map.get("icon")) // 获取类型
         Map map = list.get(position);
-        icon.setBackground((Drawable) map.get("icon"));
-        text.setText((String) map.get("text"));
+        holder.icon.setImageResource((Integer) map.get("icon")); // Drawable error
+        holder.text.setText((String) map.get("text"));
 
-        return view;
+        return convertView;
+    }
+
+    public class ViewHolder {
+        ImageView icon;
+        TextView text;
     }
 }

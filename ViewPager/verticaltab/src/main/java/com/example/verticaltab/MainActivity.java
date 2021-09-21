@@ -24,6 +24,10 @@ import java.util.ArrayList;
 /**
  * @author wenhao
  *
+ * state_pressed 是否被按下
+ * state_focused 是否获得焦点
+ * state_selected 是否被选中
+ * state_enabled 是否可用
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     String tag = "home";
