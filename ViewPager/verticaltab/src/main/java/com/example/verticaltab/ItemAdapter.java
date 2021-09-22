@@ -9,18 +9,38 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class ItemAdapter extends BaseAdapter {
     String tag = "home";
+    int[] disabled = {};
+
     List<Map<String,Object>> list ;
     LayoutInflater inflater;
-    Context context;
+    private boolean isAllItemEnable = true;
 
     public ItemAdapter(Context context) {
         this.inflater=LayoutInflater.from(context);
-        this.context = context;
+    }
+
+    @Override
+    public boolean isEnabled(int position) {
+        if (disabled != null) {
+            Log.d(tag, "disabled=" + disabled.length);
+            for (int i = 0; i < disabled.length; i++) {
+                if (disabled[i] == position) {
+                    return false;
+                }
+            }
+        }
+        return isAllItemEnable;
+    }
+
+    public void setDisabledItem (int ...list) {
+        disabled = list;
+        notifyDataSetChanged();
     }
 
     public void setList(List<Map<String, Object>> list) {
@@ -57,7 +77,7 @@ public class ItemAdapter extends BaseAdapter {
         }
 //        context.getResources().getDrawable(map.get("icon")) // 获取类型
         Map map = list.get(position);
-        holder.icon.setImageResource((Integer) map.get("icon")); // Drawable error
+        holder.icon.setImageResource((Integer) map.get("icon"));
         holder.text.setText((String) map.get("text"));
 
         return convertView;

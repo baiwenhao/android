@@ -26,8 +26,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
-            android:id="@+id/component"
-            android:text="back"
+            android:id="@+id/disable"
+            android:text="disable first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/theme"
+            android:text="theme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -39,6 +44,7 @@
 
         <!-- white bg -->
         <LinearLayout
+            android:id="@+id/bg"
             android:layout_width="130dp"
             android:layout_alignParentEnd="true"
             android:layout_height="match_parent"
@@ -62,7 +68,6 @@
                 android:orientation="horizontal" />
 
             <LinearLayout
-                android:id="@+id/shadow"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="30dp"
                 android:layout_width="130dp"
@@ -73,7 +78,7 @@
 
         <ListView
             android:divider="#00000000"
-            android:dividerHeight="1dp"
+            android:dividerHeight="0dp"
             android:layout_alignParentEnd="true"
             android:listSelector="@android:color/transparent"
             android:scrollbars="vertical"
