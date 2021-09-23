@@ -23,6 +23,7 @@ import java.util.Random;
 /**
  * @author wenhao
  */
+
 public class DetailActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     String tag = "home";
     Button toggle, color, disable;
@@ -156,7 +157,6 @@ public class DetailActivity extends AppCompatActivity implements AdapterView.OnI
         adapter.setList(list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
-
         active.setVisibility(View.VISIBLE);
     }
 
@@ -187,11 +187,3 @@ public class DetailActivity extends AppCompatActivity implements AdapterView.OnI
         active.startAnimation(ani);
     }
 }
-
-// 普通按钮，布局绑定事件
-// View.OnClickListener,
-//public void onClick(View v) {}
-
-// 由于 inflate 和 findViewById 为主要耗时方法，因此要做优化
-
-// 缺少点击的回调事件

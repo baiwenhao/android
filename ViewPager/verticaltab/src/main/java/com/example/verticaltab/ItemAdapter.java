@@ -77,7 +77,6 @@ public class ItemAdapter extends BaseAdapter {
         } else {
             holder =(ViewHolder) convertView.getTag();
         }
-//        context.getResources().getDrawable(map.get("icon")) // 获取类型
         Map map = list.get(position);
         holder.icon.setImageResource((Integer) map.get("icon"));
         holder.text.setText((String) map.get("text"));
