@@ -1,4 +1,4 @@
-package com.example.verticaltab;
+package com.example.sidebar;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -10,7 +10,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -77,7 +76,6 @@ public class ItemAdapter extends BaseAdapter {
         } else {
             holder =(ViewHolder) convertView.getTag();
         }
-//        context.getResources().getDrawable(map.get("icon")) // 获取类型
         Map map = list.get(position);
         holder.icon.setImageResource((Integer) map.get("icon"));
         holder.text.setText((String) map.get("text"));

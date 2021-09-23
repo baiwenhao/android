@@ -1,6 +1,5 @@
-package com.example.verticaltab;
+package com.example.sidebar;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -12,6 +11,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -156,7 +157,6 @@ public class DetailActivity extends AppCompatActivity implements AdapterView.OnI
         adapter.setList(list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
-
         active.setVisibility(View.VISIBLE);
     }
 
@@ -187,11 +187,3 @@ public class DetailActivity extends AppCompatActivity implements AdapterView.OnI
         active.startAnimation(ani);
     }
 }
-
-// 普通按钮，布局绑定事件
-// View.OnClickListener,
-//public void onClick(View v) {}
-
-// 由于 inflate 和 findViewById 为主要耗时方法，因此要做优化
-
-// 缺少点击的回调事件
