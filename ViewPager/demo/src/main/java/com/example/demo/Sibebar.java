@@ -1,14 +1,12 @@
-package com.example.verticaltab;
+package com.example.demo;
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.graphics.Color;
+import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
-import android.os.Bundle;
-import android.util.Log;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -17,68 +15,30 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Random;
 
 /**
  * @author wenhao
  */
-public class DetailActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
-    String tag = "home";
-    Button toggle, color, disable;
-    Boolean stateButton=false, disabledState=false;
-
-    LinearLayout bg;
-    int prevTop = 0;
+public class Sibebar extends RelativeLayout implements AdapterView.OnItemClickListener {
+    SidebarAdapter adapter;
+    RelativeLayout config,active;
     ListView listView;
-    RelativeLayout active, config;
-    ItemAdapter adapter;
+    LinearLayout bg;
+    Context context;
+    int prevTop = 0;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
-        Objects.requireNonNull(getSupportActionBar()).hide();
-
-        init();
-        setMain("home", "list", "detail");
+    public Sibebar(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
     }
 
-    private void init() {
-        listView = findViewById(R.id.list_view);
-        active = findViewById(R.id.active);
-        config = findViewById(R.id.config);
-        toggle = findViewById(R.id.toggle);
-        color = findViewById(R.id.color);
-        disable = findViewById(R.id.disable);
-        bg = findViewById(R.id.bg);
-
-        toggle.setOnClickListener(v->{
-            setProximity(stateButton);
-            stateButton = !stateButton;
-        });
-
-        config.setOnClickListener(v->{
-            animateItem(v.getTop());
-            prevTop = v.getTop();
-        });
-
-        color.setOnClickListener(v->{
-            Random rnd = new Random();
-            int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-            Log.d(tag, "color:" + color);
-            setActivityColor(color);
-        });
-
-        disable.setOnClickListener(v->{
-            if (!disabledState) {
-                setDisabledItem(0);
-            } else {
-                setDisabledItem();
-            }
-            disable.setText(!disabledState ? "enabled first" : "disabled first");
-            disabledState = !disabledState;
-        });
+    private void init(Context context) {
+        context = context;
+        View view = LayoutInflater.from(context).inflate(R.layout.sidebar, this);
+        listView = view.findViewById(R.id.list_view);
+        active = view.findViewById(R.id.active);
+        config = view.findViewById(R.id.config);
+        bg = view.findViewById(R.id.bg);
     }
 
     public void setDisabledItem (int ...list) {
@@ -152,7 +112,7 @@ public class DetailActivity extends AppCompatActivity implements AdapterView.OnI
                 list.add(map);
             }
         }
-        adapter = new ItemAdapter(this);
+        adapter = new SidebarAdapter(context);
         adapter.setList(list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
@@ -160,7 +120,7 @@ public class DetailActivity extends AppCompatActivity implements AdapterView.OnI
     }
 
     @Override
-    public void onItemClick (AdapterView<?> parent, View view, int position, long id) {
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         animateItem(view.getTop());
         prevTop = view.getTop();
     }

@@ -6,6 +6,8 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 
+import java.util.Objects;
+
 /**
  * @author wenhao
  * 自定义控件分类：
@@ -19,14 +21,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         ViewPager2 viewPager = findViewById(R.id.viewPager);
         MyAdapter viewPagerAdapter = new MyAdapter();
         viewPager.setAdapter(viewPagerAdapter);
 
-        // 动态设置背景色
-//        viewPager.setBackgroundColor(Color.parseColor("#FF00FF"));
-//        viewPager.setBackgroundResource(R.drawable.main_button);
     }
 }
 

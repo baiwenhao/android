@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/active"
+    android:layout_width="140dp"
+    android:layout_height="186dp"
+    android:layout_marginTop="-23dp"
+    android:background="@drawable/sidebar_active_black"
+    android:layout_alignParentStart="true">
+    <!-- 阴影 -->
+    <!--            <LinearLayout-->
+    <!--                android:layout_marginTop="30dp"-->
+    <!--                android:layout_alignParentEnd="true"-->
+    <!--                android:layout_width="130dp"-->
+    <!--                android:layout_height="140dp"-->
+    <!--                android:background="#fff"-->
+    <!--                android:orientation="horizontal"-->
+    <!--                android:elevation="10dp" />-->
+    <!-- 高亮 -->
+    <LinearLayout
+        android:id="@+id/light"
+        android:layout_marginTop="23dp"
+        android:background="@drawable/sidebar_active"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:orientation="horizontal" />
+    <!-- 渐变 -->
+    <LinearLayout
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="23dp"
+        android:layout_width="130dp"
+        android:layout_height="140dp"
+        android:elevation="10dp"
+        android:background="@drawable/sidebar_active_white_gradient"
+        android:orientation="horizontal" />
+</RelativeLayout>

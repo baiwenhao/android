@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
  * TranslateAnimation 位移动画效果
  * RotateAnimation 旋转动画效果
  * */
-public class Animate {
+public class Ani {
     // imageView控件由完全透明到完全不透明变化，持续时间为0.2s
     private void toVisibleAnim(View view)
     {

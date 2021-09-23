@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+/**
+ * @author wenhao
+ */
 public class CustomLayout extends RelativeLayout {
     TextView textView;
     public CustomLayout(Context context, AttributeSet attrs) {

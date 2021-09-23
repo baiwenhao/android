@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:elevation="20dp"
     android:background="@color/purple_700"
     tools:context=".DetailActivity">
 
+    <!-- 左边 控制层 -->
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
@@ -33,6 +33,7 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
+    <!-- sidebar -->
     <RelativeLayout
         android:id="@+id/middle"
         android:paddingRight="45dp"
@@ -48,7 +49,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/bg"
             android:orientation="horizontal" />
-
+        <!-- active -->
         <RelativeLayout
             android:visibility="visible"
             android:id="@+id/active"

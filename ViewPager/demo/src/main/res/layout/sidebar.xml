@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="185dp"
+    android:layout_height="match_parent"
+    android:paddingEnd="45dp"
+    android:background="@drawable/sidebar_black_shadow"
+    tools:context=".Sibebar">
+    <include layout="@layout/sidebar_bg" />
+    <include layout="@layout/sidebar_active" />
+    <ListView
+        android:divider="#00000000"
+        android:dividerHeight="0dp"
+        android:layout_alignParentEnd="true"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
+        android:id="@+id/list_view"
+        android:layout_width="130dp"
+        android:layout_height="560dp" />
+    <include layout="@layout/sidebar_item_config" />
+</RelativeLayout>
