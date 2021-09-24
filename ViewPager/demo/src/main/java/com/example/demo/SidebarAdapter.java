@@ -10,13 +10,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.demo.R;
-
 import java.util.List;
 import java.util.Map;
 
 public class SidebarAdapter extends BaseAdapter {
-    String tag = "home";
     String theme = "white";
     int[] disabled = {};
 
@@ -31,7 +28,6 @@ public class SidebarAdapter extends BaseAdapter {
     @Override
     public boolean isEnabled(int position) {
         if (disabled != null) {
-            Log.d(tag, "disabled=" + disabled.length);
             for (int i = 0; i < disabled.length; i++) {
                 if (disabled[i] == position) {
                     return false;

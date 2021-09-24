@@ -4,11 +4,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_alignParentBottom="true"
     android:layout_alignParentEnd="true"
+    android:background="#fff"
     android:layout_width="130dp"
     android:layout_height="140dp">
 
     <ImageView
-        android:id="@+id/icon_text"
+        android:id="@+id/icon_img"
         android:background="@drawable/icon_config_selector"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -17,7 +18,7 @@
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/app_name"/>
     <TextView
-        android:id="@+id/icon_img"
+        android:id="@+id/icon_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"

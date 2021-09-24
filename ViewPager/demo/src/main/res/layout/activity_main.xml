@@ -7,8 +7,36 @@
     android:orientation="horizontal"
     tools:context=".MainActivity">
 
-    <com.example.demo.Sibebar
-        android:layout_width="200dp"
+    <LinearLayout
+        android:background="#000"
+        android:layout_width="100dp"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/btn1"
+            android:text="接近态"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn2"
+            android:text="禁用态"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn3"
+            android:text="氛围灯"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn4"
+            android:text="主题色"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <com.example.demo.Sidebar
+        android:id="@+id/sidebar"
+        android:layout_width="185dp"
         android:layout_height="match_parent" />
 
     <androidx.viewpager2.widget.ViewPager2

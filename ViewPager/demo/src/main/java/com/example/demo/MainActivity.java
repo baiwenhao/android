@@ -3,10 +3,14 @@ package com.example.demo;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.LinearLayout;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.Objects;
+import java.util.Random;
 
 /**
  * @author wenhao
@@ -16,7 +20,13 @@ import java.util.Objects;
  * 组合控件
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    Sidebar sidebar;
+    String tag = "home";
+
+    Button btn1,btn2,btn3,btn4;
+    Boolean state=false,state2=false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +37,53 @@ public class MainActivity extends AppCompatActivity {
         MyAdapter viewPagerAdapter = new MyAdapter();
         viewPager.setAdapter(viewPagerAdapter);
 
+        // component
+        sidebar = findViewById(R.id.sidebar);
+        sidebar.setItem("home","list","list");
+        sidebar.setActivePosition(1);
+        sidebar.setOnItemSelectListener(new Sidebar.OnItemSelectListener() {
+            @Override
+            public void onItemSelect(int index, String indexString) {
+                Log.d(tag, "111111");
+            }
+        });
+
+        btn1 = findViewById(R.id.btn1);
+        btn2 = findViewById(R.id.btn2);
+        btn3 = findViewById(R.id.btn3);
+        btn4 = findViewById(R.id.btn4);
+
+        btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
+        btn4.setOnClickListener(this);
+    }
+
+    public void setOnItemViewClickListener () {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        if (id == R.id.btn1) {
+            sidebar.setProximity(state2);
+            state2=!state2;
+        } else if (id == R.id.btn2) {
+            if (!state) {
+                sidebar.setDisabledItem(0, 1);
+            } else {
+                sidebar.setDisabledItem();
+            }
+            state=!state;
+        } else if (id == R.id.btn3) {
+            Random rnd = new Random();
+            int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+            Log.d(tag, "color:" + color);
+            sidebar.setActiveColor(color);
+        } else if (id == R.id.btn4) {
+            //
+        }
     }
 }
 

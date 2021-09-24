@@ -112,16 +112,16 @@ public class DetailActivity extends AppCompatActivity implements AdapterView.OnI
             View view = listView.getChildAt(i);
             view.findViewById(R.id.icon_text).setVisibility(!state ? View.GONE : View.VISIBLE);
             if (!state) {
-                animateIcon(view.findViewById(R.id.icon_img), 0, 12);
+                animateIcon(view.findViewById(R.id.icon_img), 0, 10);
             } else {
-                animateIcon(view.findViewById(R.id.icon_img), 12, 0);
+                animateIcon(view.findViewById(R.id.icon_img), 10, 0);
             }
             i++;
         }
         if (!state) {
-            animateIcon(config.findViewById(R.id.icon_img), 0, 12);
+            animateIcon(config.findViewById(R.id.icon_img), 0, 10);
         } else {
-            animateIcon(config.findViewById(R.id.icon_img), 12, 0);
+            animateIcon(config.findViewById(R.id.icon_img), 10, 0);
         }
         config.findViewById(R.id.icon_text).setVisibility(!state ? View.GONE : View.VISIBLE);
     }
