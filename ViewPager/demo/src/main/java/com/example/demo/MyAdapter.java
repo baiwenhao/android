@@ -46,7 +46,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewPageViewHolder
     }
 
     // 定义页面的适配器
-    class ViewPageViewHolder extends RecyclerView.ViewHolder{
+    static class ViewPageViewHolder extends RecyclerView.ViewHolder{
 
         TextView textView;
         RelativeLayout item;

@@ -1,16 +1,23 @@
 package com.example.demo;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,24 +34,32 @@ public class Sidebar extends RelativeLayout implements AdapterView.OnItemClickLi
     LinearLayout bg;
     Context context;
     int prevTop = 0;
-    String tag = "sidebar";
+    String[] items;
+    String tag = "home";
 
-    // 通过Java代码创建控件时调用
     public Sidebar(Context context) {
         super(context);
     }
 
-    // 添加到布局文件后，系统调用
     public Sidebar(Context context, AttributeSet attrs) {
         super(context, attrs);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.Sidebar);
+        String model = a.getString(R.styleable.Sidebar_model);
+        String _items = a.getString(R.styleable.Sidebar_items);
+        if (_items != null) {
+            items = _items.split(",");
+        }
+        Log.d(tag, "" + items.length);
+        a.recycle();
         init(context);
     }
+
     public interface OnItemSelectListener{
         void onItemSelect(int index, String indexString);
     }
     private OnItemSelectListener listener;
     public void setOnItemSelectListener(OnItemSelectListener listener2) {
-        this.listener = listener2;
+        listener = listener2;
     }
 
     private void init(Context context) {
@@ -56,26 +71,37 @@ public class Sidebar extends RelativeLayout implements AdapterView.OnItemClickLi
         bg = view.findViewById(R.id.bg);
         config.setOnClickListener(this);
         activeConfig();
+
+        if (items != null) {
+            setItem(items);
+        }
     }
 
     @Override
     public void onClick(View v) {
+        if (listener != null) {
+            TextView textView = v.findViewById(R.id.icon_text);
+            listener.onItemSelect(5, (String) textView.getText());
+        }
         activeConfig();
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (listener != null) {
-            listener.onItemSelect(1, "1");
+            TextView textView = view.findViewById(R.id.icon_text);
+            listener.onItemSelect(position, (String) textView.getText());
         }
         animateActive(view.getTop());
     }
 
     public void setItem (String... arr) {
+        Log.d(tag, "string=" + arr);
         List<Map<String,Object>> list = new ArrayList<>();
         Map<String,Object> map;
 
         for (String s : arr) {
+            Log.d(tag, "" + s);
             if ("home".equals(s)) {
                 map=new HashMap<>(2);
                 map.put("text", "home");
@@ -140,27 +166,54 @@ public class Sidebar extends RelativeLayout implements AdapterView.OnItemClickLi
         int i = 0;
         while (i < all) {
             View view = listView.getChildAt(i);
-            view.findViewById(R.id.icon_text).setVisibility(!state ? View.GONE : View.VISIBLE);
+            animateAlpha(view.findViewById(R.id.icon_text), state);
+//            view.findViewById(R.id.icon_text).setVisibility(!state ? View.GONE : View.VISIBLE);
             if (!state) {
-                animateProximity(view.findViewById(R.id.icon_img), 0, 12);
+                animateProximity(view.findViewById(R.id.icon_img), 0, 12, true);
             } else {
-                animateProximity(view.findViewById(R.id.icon_img), 12, 0);
+                animateProximity(view.findViewById(R.id.icon_img), 12, 0, false);
             }
             i++;
         }
         if (!state) {
-            animateProximity(config.findViewById(R.id.icon_img), 0, 12);
+            animateProximity(config.findViewById(R.id.icon_img), 0, 12, true);
         } else {
-            animateProximity(config.findViewById(R.id.icon_img), 12, 0);
+            animateProximity(config.findViewById(R.id.icon_img), 12, 0, false);
         }
         config.findViewById(R.id.icon_text).setVisibility(!state ? View.GONE : View.VISIBLE);
     }
 
-    private void animateProximity(View view, int start, int end) {
-        TranslateAnimation ani = new TranslateAnimation(0,0, start, end);
-        ani.setDuration(100);
-        ani.setFillAfter(true);
-        view.startAnimation(ani);
+    private void animateAlpha(View view, Boolean state) {
+        if (state) {
+            AlphaAnimation alphaAnimation = new AlphaAnimation(0,1);
+            alphaAnimation.setDuration(200);
+            alphaAnimation.setFillAfter(true);
+            view.startAnimation(alphaAnimation);
+        } else {
+            AlphaAnimation alphaAnimation = new AlphaAnimation(1,0);
+            alphaAnimation.setDuration(200);
+            alphaAnimation.setFillAfter(true);
+            view.startAnimation(alphaAnimation);
+        }
+    }
+
+    private void animateProximity(View view, int start, int end, Boolean state) {
+        AnimationSet animationSet = new AnimationSet(true);
+
+        if (state) {
+            ScaleAnimation scaleAnimation = new ScaleAnimation(1,1.1f,1,1.1f, 50, 50);
+            animationSet.addAnimation(scaleAnimation);
+        } else {
+            ScaleAnimation scaleAnimation = new ScaleAnimation(1.1f,1,1.1f,1, 50, 50);
+            animationSet.addAnimation(scaleAnimation);
+        }
+
+        TranslateAnimation translate = new TranslateAnimation(0,0, start, end);
+        animationSet.addAnimation(translate);
+
+        animationSet.setDuration(200);
+        animationSet.setFillAfter(true);
+        view.startAnimation(animationSet);
     }
 
     private void animateActive(int end) {
