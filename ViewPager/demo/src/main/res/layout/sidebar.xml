@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="185dp"
     android:layout_height="match_parent"
+    android:id="@+id/box"
     android:paddingEnd="45dp"
-    android:background="@drawable/sidebar_black_shadow"
+    android:background="@drawable/sidebar_shadow"
     tools:context=".Sidebar">
     <include layout="@layout/sidebar_bg" />
     <include layout="@layout/sidebar_active" />

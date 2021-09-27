@@ -14,7 +14,8 @@ import java.util.List;
 import java.util.Map;
 
 public class SidebarAdapter extends BaseAdapter {
-    String theme = "white";
+
+    String tag = "home";
     int[] disabled = {};
 
     List<Map<String,Object>> list ;
@@ -77,10 +78,7 @@ public class SidebarAdapter extends BaseAdapter {
         Map map = list.get(position);
         holder.icon.setImageResource((Integer) map.get("icon"));
         holder.text.setText((String) map.get("text"));
-        if (theme == "black") {
-            holder.text.setTextColor(Color.rgb(255, 255, 255));
-        }
-
+        holder.text.setTextColor(Color.rgb(255, 255, 255));
         return convertView;
     }
 

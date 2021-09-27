@@ -37,11 +37,20 @@
             android:layout_height="wrap_content"
             android:text="点击回调"
             android:id="@+id/btn5" />
+        <Button
+            android:id="@+id/btn6"
+            android:text="clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn7"
+            android:text="setMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
-
     <com.example.demo.Sidebar
         android:id="@+id/sidebar"
-        Sidebar:model="light"
+        Sidebar:model="dark"
         Sidebar:items="home,list,detail"
         android:layout_width="185dp"
         android:layout_height="match_parent" />
@@ -54,7 +63,9 @@
         android:background="@color/purple_200"
         tools:ignore="MissingConstraints" />
 
-<!--        <com.example.demo.CustomLayout-->
+
+
+    <!--        <com.example.demo.CustomLayout-->
 <!--            android:id="@+id/custom_layout"-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content" />-->

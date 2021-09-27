@@ -2,6 +2,7 @@ package com.example.demo;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -23,17 +24,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * @author wenhao
  */
 public class Sidebar extends RelativeLayout implements AdapterView.OnItemClickListener,View.OnClickListener {
-    SidebarAdapter adapter;
-    RelativeLayout config,active;
     ListView listView;
-    LinearLayout bg;
     Context context;
+    SidebarAdapter adapter;
+    RelativeLayout config,active,box;
+    LinearLayout bg;
     int prevTop = 0;
+    String model;
     String[] items;
     String tag = "home";
 
@@ -44,12 +47,14 @@ public class Sidebar extends RelativeLayout implements AdapterView.OnItemClickLi
     public Sidebar(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.Sidebar);
-        String model = a.getString(R.styleable.Sidebar_model);
+        String _model = a.getString(R.styleable.Sidebar_model);
         String _items = a.getString(R.styleable.Sidebar_items);
         if (_items != null) {
             items = _items.split(",");
         }
-        Log.d(tag, "" + items.length);
+        if (_model != null) {
+            model = _model;
+        }
         a.recycle();
         init(context);
     }
@@ -65,15 +70,18 @@ public class Sidebar extends RelativeLayout implements AdapterView.OnItemClickLi
     private void init(Context context) {
         this.context = context;
         View view = LayoutInflater.from(context).inflate(R.layout.sidebar, this, true);
+        box = findViewById(R.id.box);
         listView = view.findViewById(R.id.list_view);
         active = view.findViewById(R.id.active);
         config = view.findViewById(R.id.config);
         bg = view.findViewById(R.id.bg);
         config.setOnClickListener(this);
         activeConfig();
-
         if (items != null) {
             setItem(items);
+        }
+        if (model != null) {
+            setModel(model);
         }
     }
 
@@ -81,7 +89,7 @@ public class Sidebar extends RelativeLayout implements AdapterView.OnItemClickLi
     public void onClick(View v) {
         if (listener != null) {
             TextView textView = v.findViewById(R.id.icon_text);
-            listener.onItemSelect(5, (String) textView.getText());
+            listener.onItemSelect(0, (String) textView.getText());
         }
         activeConfig();
     }
@@ -89,6 +97,7 @@ public class Sidebar extends RelativeLayout implements AdapterView.OnItemClickLi
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (listener != null) {
+            position+=1;
             TextView textView = view.findViewById(R.id.icon_text);
             listener.onItemSelect(position, (String) textView.getText());
         }
@@ -96,12 +105,10 @@ public class Sidebar extends RelativeLayout implements AdapterView.OnItemClickLi
     }
 
     public void setItem (String... arr) {
-        Log.d(tag, "string=" + arr);
         List<Map<String,Object>> list = new ArrayList<>();
         Map<String,Object> map;
 
         for (String s : arr) {
-            Log.d(tag, "" + s);
             if ("home".equals(s)) {
                 map=new HashMap<>(2);
                 map.put("text", "home");
@@ -126,12 +133,25 @@ public class Sidebar extends RelativeLayout implements AdapterView.OnItemClickLi
         }
         adapter = new SidebarAdapter(context);
         adapter.setList(list);
+        Log.d(tag, "初始化=" + model);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
         animateActive(0);
     }
 
-    public void setActivePosition (int position) {
+    public void setModel (String model) {
+        GradientDrawable drawable =(GradientDrawable) bg
+                .getBackground()
+                .mutate();
+
+        if (model == "light") {
+            drawable.setColor(Integer.parseInt("#fff"));
+        } else if (model == "dark") {
+            drawable.setColor(Integer.parseInt("#000"));
+        }
+    }
+
+    public void setActivePosition (int position, Boolean state) {
         if (position < listView.getCount()) {
             animateActive(position * 140);
         }
@@ -139,10 +159,14 @@ public class Sidebar extends RelativeLayout implements AdapterView.OnItemClickLi
 
     public void setDisabledItem (int ...list) {
         int count = listView.getCount();
-        for (int n = 0; n < count; n++) {
-            View view = listView.getChildAt(n);
-            view.findViewById(R.id.icon_text).setEnabled(true);
-            view.findViewById(R.id.icon_img).setAlpha(1);
+        if (count > 0) {
+            for (int n = 0; n < count; n++) {
+                View view = listView.getChildAt(n);
+                view.findViewById(R.id.icon_text).setEnabled(true);
+                view.findViewById(R.id.icon_img).setAlpha(1);
+            }
+        } else {
+            return;
         }
         if (list.length >= 1) {
             for (int j : list) {
@@ -161,6 +185,13 @@ public class Sidebar extends RelativeLayout implements AdapterView.OnItemClickLi
         if (drawable != null) { drawable.setColor(color); }
     }
 
+    public void clear () {
+        listView.setAdapter(null);
+        activeConfig();
+//        listAdapter.clear();
+//        listAdapter.notifyDataSetChanged() ;
+    }
+
     public void setProximity (Boolean state) {
         int all = listView.getCount();
         int i = 0;
@@ -175,11 +206,13 @@ public class Sidebar extends RelativeLayout implements AdapterView.OnItemClickLi
             }
             i++;
         }
+
         if (!state) {
             animateProximity(config.findViewById(R.id.icon_img), 0, 12, true);
         } else {
             animateProximity(config.findViewById(R.id.icon_img), 12, 0, false);
         }
+        box.setSelected(state);
         config.findViewById(R.id.icon_text).setVisibility(!state ? View.GONE : View.VISIBLE);
     }
 
@@ -225,6 +258,7 @@ public class Sidebar extends RelativeLayout implements AdapterView.OnItemClickLi
     }
 
     private void activeConfig () {
+        TextView textView = config.findViewById(R.id.icon_text);
         animateActive(488);
     }
 }

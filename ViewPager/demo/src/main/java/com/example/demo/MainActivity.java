@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Sidebar sidebar;
     String tag = "home";
 
-    Button btn1,btn2,btn3,btn4,btn5;
-    Boolean state=false,state2=false;
+    Button btn1,btn2,btn3,btn4,btn5,btn6,btn7;
+    Boolean state=false,state2=false,_theme=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +39,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // component
         sidebar = findViewById(R.id.sidebar);
-        Log.d(tag, "mainactivity");
 //        sidebar.setItem("home","list","list");
 //        sidebar.setActivePosition(1);
         sidebar.setOnItemSelectListener(new Sidebar.OnItemSelectListener() {
             @Override
             public void onItemSelect(int position, String text) {
-                btn5.setText(text);
+                btn5.setText(position + text);
             }
         });
 
@@ -54,11 +53,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn3 = findViewById(R.id.btn3);
         btn4 = findViewById(R.id.btn4);
         btn5 = findViewById(R.id.btn5);
+        btn6 = findViewById(R.id.btn6);
+        btn7 = findViewById(R.id.btn7);
 
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);
         btn4.setOnClickListener(this);
+        btn6.setOnClickListener(this);
+        btn7.setOnClickListener(this);
     }
 
     @Override
@@ -77,9 +80,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (id == R.id.btn3) {
             Random rnd = new Random();
             int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+            Log.d(tag, "color=" + color);
             sidebar.setActiveColor(color);
         } else if (id == R.id.btn4) {
-            //
+            if (!_theme) {
+                sidebar.setModel("dark");
+            } else {
+                sidebar.setModel("light");
+            }
+            _theme=!_theme;
+        } else if (id == R.id.btn6) {
+            sidebar.clear();
+        } else if (id == R.id.btn7) {
+            sidebar.setItem("home", "list");
         }
     }
 }
