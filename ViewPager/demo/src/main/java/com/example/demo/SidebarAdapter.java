@@ -78,7 +78,7 @@ public class SidebarAdapter extends BaseAdapter {
         Map map = list.get(position);
         holder.icon.setImageResource((Integer) map.get("icon"));
         holder.text.setText((String) map.get("text"));
-        holder.text.setTextColor(Color.rgb(255, 255, 255));
+        holder.text.setTextColor(Color.rgb(000, 000, 000));
         return convertView;
     }
 
